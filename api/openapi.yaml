@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Auth API
+  description: An API for user authentication
+  version: 1.0.0
+
+paths:
+  /create-user:
+    post:
+      summary: Create a new user with a hashed password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+                - masterpassword
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                masterpassword:
+                  type: string
+      responses:
+        '200':
+          description: User created successfully
+        '400':
+          description: No valid masterpassword was provided
+        '409':
+          description: Username already exists
+
+  /validate-user:
+    post:
+      summary: Validate a user's credentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+                - masterpassword
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                masterpassword:
+                  type: string
+      responses:
+        '200':
+          description: User authenticated successfully
+        '401':
+          description: Unauthorized (wrong credentials)
+        '400':
+          description: No valid masterpassword was provided

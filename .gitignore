@@ -1,3 +1,12 @@
+# function.zip
+function.zip
+
+# Terraform
+.terraform/*
+*.tfvars
+*.tfstate*
+*.lock.hcl
+
 # Logs
 logs
 *.log
